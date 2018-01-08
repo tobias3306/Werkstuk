@@ -3,6 +3,7 @@ package com.ehb.tobias.werkstuk;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,8 +41,8 @@ public class SettingsActivity extends AppCompatActivity {
                     newATM.setAdress(ATMArray[i].getFields().getAdress());
                     newATM.setAdresse(ATMArray[i].getFields().getAdresse());
                     newATM.setAgen(ATMArray[i].getFields().getAgen());
-                    newATM.setLatitude(ATMArray[i].getFields().getCoord_wgs84()[0]);
                     newATM.setLatitude(ATMArray[i].getFields().getCoord_wgs84()[1]);
+                    newATM.setLongitude(ATMArray[i].getFields().getCoord_wgs84()[0]);
                     newATM.setDatasetid(ATMArray[i].getDatasetid());
                     newATM.setQuoi(ATMArray[i].getFields().getQuoi());
                     newATM.setRecordid(ATMArray[i].getRecordid());

@@ -43,10 +43,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         android.support.v7.widget.Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-        SugarContext.init(this);
-
-        ATMArray = ATM_DB.listAll(ATM_DB.class);
-
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
             mapViewBundle = savedInstanceState.getBundle(MAP_VIEW_BUNDLE_KEY);
@@ -67,6 +63,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView = findViewById(R.id.mapView);
         mapView.onCreate(mapViewBundle);
         mapView.getMapAsync(this);
+
+        SugarContext.init(this);
+
+        ATMArray = ATM_DB.listAll(ATM_DB.class);
+        for(int i =0; i<ATMArray.size();i++){
+            Log.d("longitude",Double.toString(ATMArray.get(i).getLongitude()));
+        }
+
     }
 
     @Override
