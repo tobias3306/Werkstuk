@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView.getMapAsync(this);
 
         SugarContext.init(this);
-
+        
         ATMArray = ATM_DB.listAll(ATM_DB.class);
         for(int i =0; i<ATMArray.size();i++){
             Log.d("longitude",Double.toString(ATMArray.get(i).getLongitude()));
