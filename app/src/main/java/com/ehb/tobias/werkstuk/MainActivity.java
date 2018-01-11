@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
     private Location location;
     private List<ATM_DB> ATMArray;
+    private boolean mapReady = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapView.getMapAsync(this);
 
         SugarContext.init(this);
-        
+
         ATMArray = ATM_DB.listAll(ATM_DB.class);
         for(int i =0; i<ATMArray.size();i++){
             Log.d("longitude",Double.toString(ATMArray.get(i).getLongitude()));
@@ -185,7 +186,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     LocationListener locationListener = new LocationListener() {
         public void onLocationChanged(Location location) {
             LatLng myLoc = new LatLng(location.getLatitude(),location.getLongitude());
-            gmap.moveCamera(CameraUpdateFactory.newLatLng(myLoc));
+            if(mapReady){
+                gmap.moveCamera(CameraUpdateFactory.newLatLng(myLoc));
+            }
         }
 
         public void onStatusChanged(String provider, int status, Bundle extras) {

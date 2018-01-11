@@ -62,6 +62,7 @@ public class HttpURLConnectionAPI {
         while(done == false){
 
         }
+        done = false;
 
         return ATMArray;
     }
