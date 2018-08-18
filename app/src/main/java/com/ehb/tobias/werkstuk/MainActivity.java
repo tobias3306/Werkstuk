@@ -90,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gmap = googleMap;
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            gmap.setMyLocationEnabled(true);
+        }
         gmap.setMinZoomPreference(13);
         LatLng myLoc = new LatLng(50.8422424,4.3206193);
         if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
