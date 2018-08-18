@@ -1,6 +1,7 @@
 package com.ehb.tobias.werkstuk;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,15 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         android.support.v7.widget.Toolbar myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
+
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            if(intent.getStringExtra("input")!=null){
+                String input = intent.getStringExtra("input");
+                test2Fragment fragment2 = (test2Fragment)getSupportFragmentManager().findFragmentById(R.id.fragment2);
+                fragment2.setText(input);
+            }
+        }
 
         SugarContext.init(this);
 
